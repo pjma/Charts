@@ -150,7 +150,24 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
             _fillFormatter = newValue ?? DefaultFillFormatter()
         }
     }
+
+
+	private var _HighlightActiveDistance = CGFloat(-1.0)
     
+    /// Intensity for cubic lines (min = 0.05, max = 1)
+    ///
+    /// **default**: 0.2
+    open var HighlightActiveDistance: CGFloat
+    {
+        get
+        {
+            return _HighlightActiveDistance
+        }
+        set
+        {
+            _HighlightActiveDistance = newValue
+        }
+    } 
     // MARK: NSCopying
     
     open override func copy(with zone: NSZone? = nil) -> Any
@@ -168,6 +185,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         copy.drawCircleHoleEnabled = drawCircleHoleEnabled
         copy.mode = mode
         copy._fillFormatter = _fillFormatter
+		copy.HighlightActiveDistance = HighlightActiveDistance
         return copy
     }
 }

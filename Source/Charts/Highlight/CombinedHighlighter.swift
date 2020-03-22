@@ -54,7 +54,23 @@ open class CombinedHighlighter: ChartHighlighter
                         dataSet.isHighlightEnabled      // don't include datasets that cannot be highlighted
                         else { continue }
 
-                    let highs = buildHighlights(dataSet: dataSet, dataSetIndex: j, xValue: xValue, rounding: .closest)
+                    var highs = buildHighlights(dataSet: dataSet, dataSetIndex: j, xValue: xValue, rounding: .closest)
+
+					//------------------------
+					if(dataSet is ILineChartDataSet  ){
+                        let distance = (dataSet as? ILineChartDataSet)?.HighlightActiveDistance;
+                        if distance! > 0.0  {
+                            var highs_fix =  [Highlight](); 
+                            for  high in highs
+                            { 
+                                if(getDistance(x1:x, y1:y,x2: high.xPx, y2:high.yPx) < distance!){
+                                    highs_fix.append(high);
+                                }
+                            }
+                            highs = highs_fix;
+                        }
+                    }
+					//----------------------------
 
                     for high in highs
                     {
