@@ -5,3 +5,17 @@ xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS
 
 
 xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework ./BuildFM/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
+
+
+
+https://docs.microsoft.com/zh-cn/xamarin/ios/platform/binding-swift/walkthrough
+cp -R "Release-iphoneos" "Release-fat"
+
+
+cp -R "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Modules/Charts.swiftmodule/" "./Charts.framework/Modules/Charts.swiftmodule/"
+
+lipo -create -output "./Charts.framework/Charts" "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework/Charts" "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Charts"
+
+lipo -info "./Charts.framework/Charts"
+
+
