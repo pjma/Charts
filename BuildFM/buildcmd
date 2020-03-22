@@ -4,13 +4,12 @@ xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS
 xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS Simulator" -archivePath ./BuildFM/iOSSimulator.xcarchive -sdk iphonesimulator SKIP_INSTALL=NO 
 
 
-xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework ./BuildFM/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
+#xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework ./BuildFM/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
+
+#https://docs.microsoft.com/zh-cn/xamarin/ios/platform/binding-swift/walkthrough
 
 
-
-https://docs.microsoft.com/zh-cn/xamarin/ios/platform/binding-swift/walkthrough
 cp -R "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework" "./"
-
 
 cp -R "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Modules/Charts.swiftmodule/" "./Charts.framework/Modules/Charts.swiftmodule/"
 
