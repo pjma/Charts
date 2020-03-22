@@ -1,23 +1,7 @@
-xcodebuild archive  -scheme Charts -destination="iOS"  -sdk iphoneos -archivePath ./BuildFM/iOS.xcarchive
+xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS"  -sdk iphoneos -archivePath ./BuildFM/iOS.xcarchive SKIP_INSTALL=NO 
 
 
-xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS Simulator"  -sdk iphonesimulator -archivePath ./BuildFM/iOSSimulator.xcarchive
+xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS Simulator" -archivePath ./BuildFM/iOSSimulator.xcarchive -sdk iphonesimulator SKIP_INSTALL=NO 
 
 
-
-xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive -framework ./BuildFM/iOSSimulator.xcarchive -output ./BuildFM/iOSFM.xcframework
-
-
-
-
-xcodebuild archive  -scheme Charts -destination="iOS"  -sdk iphoneos -archivePath ./BuildFM/iOS.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DESTRIBUTION=YES
-
-
-
-xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS"  -sdk iphoneos -archivePath /tmp/charts/iOS SKIP_INSTALL=NO 
-
-
-xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS Simulator" -archivePath /tmp/charts/iOSSimulator -sdk iphonesimulator SKIP_INSTALL=NO 
-
-
-xcodebuild -create-xcframework -framework /tmp/charts/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework /tmp/charts/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
+xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework ./BuildFM/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
