@@ -86,6 +86,14 @@
     
 
 
+    XYMarkerView *marker = [[XYMarkerView alloc]
+                                  initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+                                  font: [UIFont systemFontOfSize:12.0]
+                                  textColor: UIColor.whiteColor
+                                  insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
+                                  xAxisValueFormatter: _chartView.xAxis.valueFormatter];
+    marker.chartView = _chartView;
+    marker.minimumSize = CGSizeMake(80.f, 40.f);
     _chartView.marker = marker;
 
 
