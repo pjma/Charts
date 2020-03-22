@@ -71,6 +71,16 @@ class CombinedChartViewController: DemoBaseViewController {
         xAxis.granularity = 1
         xAxis.valueFormatter = self
         
+
+		let marker = XYMarkerView(color: UIColor(white: 180/250, alpha: 1),
+                                  font: .systemFont(ofSize: 12),
+                                  textColor: .white,
+                                  insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8),
+                                  xAxisValueFormatter: chartView.xAxis.valueFormatter!)
+        marker.chartView = chartView
+        marker.minimumSize = CGSize(width: 80, height: 40)
+        chartView.marker = marker
+
         self.updateChartData()
     }
     
