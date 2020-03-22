@@ -18,3 +18,10 @@ lipo -create -output "./Charts.framework/Charts" "./iOS.xcarchive/Products/Libra
 lipo -info "./Charts.framework/Charts"
 
 
+
+
+
+sharpie bind --sdk=iphoneos --output="Charts" --namespace="Binding" --scope="./Charts.framework/Headers/" "./Charts.framework/Headers/Charts-Swift.h"
+
+
+
