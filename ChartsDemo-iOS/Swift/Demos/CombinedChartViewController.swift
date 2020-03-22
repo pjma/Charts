@@ -98,7 +98,7 @@ class CombinedChartViewController: DemoBaseViewController {
         data.lineData = generateLineData()
         data.barData = generateBarData()
         data.bubbleData = generateBubbleData()
-        data.scatterData = generateScatterData()
+        //data.scatterData = generateScatterData()
         data.candleData = generateCandleData()
         
         chartView.xAxis.axisMaximum = data.xMax + 0.25

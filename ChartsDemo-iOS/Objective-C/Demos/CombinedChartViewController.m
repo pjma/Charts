@@ -122,8 +122,8 @@
     CombinedChartData *data = [[CombinedChartData alloc] init];
     data.lineData = [self generateLineData];
     data.barData = [self generateBarData];
-    data.bubbleData = [self generateBubbleData];
-    data.scatterData = [self generateScatterData];
+    //data.bubbleData = [self generateBubbleData];
+    //data.scatterData = [self generateScatterData];
     data.candleData = [self generateCandleData];
     
     _chartView.xAxis.axisMaximum = data.xMax + 0.25;
@@ -196,7 +196,8 @@
     set.valueTextColor = [UIColor colorWithRed:240/255.f green:238/255.f blue:70/255.f alpha:1.f];
     
     set.axisDependency = AxisDependencyLeft;
-    
+
+    set.HighlightActiveDistance = 1.0;
     [d addDataSet:set];
     
     return d;
