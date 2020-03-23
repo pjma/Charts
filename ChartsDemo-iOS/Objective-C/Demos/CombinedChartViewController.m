@@ -197,7 +197,7 @@
     
     set.axisDependency = AxisDependencyLeft;
 
-    set.HighlightActiveDistance = 1.0;
+    set.highlightActiveDistance = 1.0;
     [d addDataSet:set];
     
     return d;

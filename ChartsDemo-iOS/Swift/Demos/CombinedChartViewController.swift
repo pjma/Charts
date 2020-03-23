@@ -154,7 +154,7 @@ class CombinedChartViewController: DemoBaseViewController {
         set.valueTextColor = UIColor(red: 240/255, green: 238/255, blue: 70/255, alpha: 1)
         
         set.axisDependency = .left
-        set.HighlightActiveDistance = 1.0
+        set.highlightActiveDistance = 1.0
         return LineChartData(dataSet: set)
     }
     

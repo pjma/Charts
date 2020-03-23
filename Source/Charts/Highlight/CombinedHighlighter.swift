@@ -58,7 +58,7 @@ open class CombinedHighlighter: ChartHighlighter
 
 					//------------------------
 					if(dataSet is ILineChartDataSet  ){
-                        let distance = (dataSet as? ILineChartDataSet)?.HighlightActiveDistance;
+                        let distance = (dataSet as? ILineChartDataSet)?.highlightActiveDistance;
                         if distance! > 0.0  {
                             var highs_fix =  [Highlight](); 
                             for  high in highs

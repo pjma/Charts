@@ -152,20 +152,20 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     }
 
 
-	private var _HighlightActiveDistance = CGFloat(-1.0)
+	private var _highlightActiveDistance = CGFloat(-1.0)
     
     /// Intensity for cubic lines (min = 0.05, max = 1)
     ///
     /// **default**: 0.2
-    open var HighlightActiveDistance: CGFloat
+    open var highlightActiveDistance: CGFloat
     {
         get
         {
-            return _HighlightActiveDistance
+            return _highlightActiveDistance
         }
         set
         {
-            _HighlightActiveDistance = newValue
+            _highlightActiveDistance = newValue
         }
     } 
     // MARK: NSCopying
@@ -185,7 +185,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         copy.drawCircleHoleEnabled = drawCircleHoleEnabled
         copy.mode = mode
         copy._fillFormatter = _fillFormatter
-		copy.HighlightActiveDistance = HighlightActiveDistance
+		copy._highlightActiveDistance = _highlightActiveDistance
         return copy
     }
 }
