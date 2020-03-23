@@ -5,23 +5,40 @@ xcodebuild archive  -project "Charts.xcodeproj" -scheme Charts -destination="iOS
 
 
 #xcodebuild -create-xcframework -framework ./BuildFM/iOS.xcarchive/Products/Library/Frameworks/Charts.framework   -framework ./BuildFM/iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework -output ./BuildFM/iOSFM.xcframework
+#cp -R "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework" "./"
+
+#cp -R "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Modules/Charts.swiftmodule/" "./Charts.framework/Modules/Charts.swiftmodule/"
+
+#lipo -create -output "./Charts.framework/Charts" "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework/Charts" "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Charts"
+
+#lipo -info "./Charts.framework/Charts"
+
+sharpie bind --sdk=iphoneos --output="Charts" --namespace="Binding" --scope="./Charts.framework/Headers/" "./Charts.framework/Headers/Charts-Swift.h"
+
+
 
 #https://docs.microsoft.com/zh-cn/xamarin/ios/platform/binding-swift/walkthrough
 
 
-cp -R "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework" "./"
 
-cp -R "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Modules/Charts.swiftmodule/" "./Charts.framework/Modules/Charts.swiftmodule/"
-
-lipo -create -output "./Charts.framework/Charts" "./iOS.xcarchive/Products/Library/Frameworks/Charts.framework/Charts" "./iOSSimulator.xcarchive/Products/Library/Frameworks/Charts.framework/Charts"
-
-lipo -info "./Charts.framework/Charts"
+xcodebuild -sdk iphonesimulator13.2 -project "Charts.xcodeproj" -configuration Release
+xcodebuild -sdk iphoneos13.2 -project "Charts.xcodeproj" -configuration Release
 
 
+cp -R "Release-iphoneos" "Release-fat"
+cp -R "Release-iphonesimulator/Charts.framework/Modules/Charts.swiftmodule/" "Release-fat/Charts.framework/Modules/Charts.swiftmodule/"
+lipo -create -output "Release-fat/Charts.framework/Charts" "Release-iphoneos/Charts.framework/Charts" "Release-iphonesimulator/Charts.framework/Charts"
+
+lipo -info "Release-fat/Charts.framework/Charts"
+
+
+sharpie bind --sdk=iphoneos13.2 --output="Charts" --namespace="Binding" --scope="Release-fat/Charts.framework/Headers/" "Release-fat/Charts.framework/Headers/Charts-Swift.h"
 
 
 
-sharpie bind --sdk=iphoneos --output="Charts" --namespace="Binding" --scope="./Charts.framework/Headers/" "./Charts.framework/Headers/Charts-Swift.h"
+
+
+
 
 
 
