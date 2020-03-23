@@ -32,7 +32,7 @@ lipo -create -output "Release-fat/Charts.framework/Charts" "Release-iphoneos/Cha
 lipo -info "Release-fat/Charts.framework/Charts"
 
 
-sharpie bind --sdk=iphoneos13.2 --output="Charts" --namespace="Binding" --scope="Release-fat/Charts.framework/Headers/" "Release-fat/Charts.framework/Headers/Charts-Swift.h"
+sharpie bind --sdk=iphoneos13.2 --output="Charts" --namespace="iOSCharts" --scope="Release-fat/Charts.framework/Headers/" "Release-fat/Charts.framework/Headers/Charts-Swift.h"
 
 
 
