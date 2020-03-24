@@ -84,6 +84,19 @@
     xAxis.granularity = 1.0;
     xAxis.valueFormatter = self;
     
+
+
+    XYMarkerView *marker = [[XYMarkerView alloc]
+                                  initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+                                  font: [UIFont systemFontOfSize:12.0]
+                                  textColor: UIColor.whiteColor
+                                  insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
+                                  xAxisValueFormatter: _chartView.xAxis.valueFormatter];
+    marker.chartView = _chartView;
+    marker.minimumSize = CGSizeMake(80.f, 40.f);
+    _chartView.marker = marker;
+
+
     [self updateChartData];
 }
 
@@ -109,8 +122,8 @@
     CombinedChartData *data = [[CombinedChartData alloc] init];
     data.lineData = [self generateLineData];
     data.barData = [self generateBarData];
-    data.bubbleData = [self generateBubbleData];
-    data.scatterData = [self generateScatterData];
+    //data.bubbleData = [self generateBubbleData];
+    //data.scatterData = [self generateScatterData];
     data.candleData = [self generateCandleData];
     
     _chartView.xAxis.axisMaximum = data.xMax + 0.25;
@@ -183,7 +196,8 @@
     set.valueTextColor = [UIColor colorWithRed:240/255.f green:238/255.f blue:70/255.f alpha:1.f];
     
     set.axisDependency = AxisDependencyLeft;
-    
+
+    set.highlightActiveDistance = 1.0;
     [d addDataSet:set];
     
     return d;

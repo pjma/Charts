@@ -150,12 +150,29 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
             _fillFormatter = newValue ?? DefaultFillFormatter()
         }
     }
+
+
+	private var _highlightActiveDistance = CGFloat(-1.0)
     
+    /// Intensity for cubic lines (min = 0.05, max = 1)
+    ///
+    /// **default**: 0.2
+    open var highlightActiveDistance: CGFloat
+    {
+        get
+        {
+            return _highlightActiveDistance
+        }
+        set
+        {
+            _highlightActiveDistance = newValue
+        }
+    } 
     // MARK: NSCopying
     
     open override func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
-        let copy = super.copyWithZone(zone) as! LineChartDataSet
+         let copy = super.copyWithZone(zone) as! LineChartDataSet
         copy.circleColors = circleColors
         copy.circleRadius = circleRadius
         copy.cubicIntensity = cubicIntensity
@@ -165,6 +182,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         copy.drawCirclesEnabled = drawCirclesEnabled
         copy.drawCircleHoleEnabled = drawCircleHoleEnabled
         copy.mode = mode
+		copy.highlightActiveDistance = highlightActiveDistance
         return copy
     }
 }

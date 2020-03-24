@@ -38,7 +38,7 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     
     var circleColors: [NSUIColor] { get set }
     
-    /// - returns: The color at the given index of the DataSet's circle-color array.
+   /// - returns: The color at the given index of the DataSet's circle-color array.
     /// Performs a IndexOutOfBounds check by modulus.
     func getCircleColor(atIndex: Int) -> NSUIColor?
     
@@ -77,4 +77,6 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     
     /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
     var fillFormatter: IFillFormatter? { get set }
+
+	var highlightActiveDistance: CGFloat { get set }
 }
